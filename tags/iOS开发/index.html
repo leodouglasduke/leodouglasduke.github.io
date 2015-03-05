@@ -1,125 +1,553 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   
   <title>Duke&#39;s blog</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Duke's blog">
+<meta property="og:url" content="http://blog.idukemou.com/tags/iOS开发/index.html">
+<meta property="og:site_name" content="Duke's blog">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Duke's blog">
+<meta name="twitter:description">
+
+  
   
     <link rel="icon" href="/favicon.png">
   
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
   
-  <!--[if lt IE 9]>
-    <script type="text/javascript" src="/js/html5.js"></script>
-    <script type="text/javascript" src="/js/css3-mediaqueries.js"></script>
-  <![endif]-->
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css" type="text/css">
+
+  
+  
+
+
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
 
 </head>
+
 <body>
+  <div id="wrap">
     <header id="header">
-    <div class="nav-warp">
-      <nav id="nav" class="w">
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/tags/index.html">Categories</a>
-        
-          <a class="main-nav-link" href="/about/index.html">About</a>
-        
-        <a id="nav-search" class="icon-search fr" onclick="show_search()" title="搜索"></a>
-        <div id="nav-search-input" class="hide">
-          <form class="search-form" onsubmit="return dispatch()">
-            <input type="hidden" id="site" value="site:http://blog.idukemou.com">
-            <input type="text" id="q" class="input-text" name="q" placeholder="搜索">
-            <input type="submit" value="" class="input-submit">
-          </form>
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">记录、分享、探讨、进步</p>
+            </h2>
+          
         </div>
-      </nav>
-    </div>
-    <div id="logo">
-      <div class="hg">
-      
-        <h2 id="site-title">
-          <a href="/">Duke&#39;s blog</a>
-        </h2>
-        
-          <p id="site-description">记录、分享、探讨、进步</p>
-        
-      
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about/index.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="q" value="site:http://blog.idukemou.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
       </div>
     </div>
-  </header>
-
-  <section id="main">
-  <div id="archives">
-  
-    <h1>undefined</h1>
-  
-  
-    
-    
-      
-      <article class="month">
-        <time datetime="2015-03" class="month-title">2015 三月</time>
-        <ul class="post-list">
-          <li>05: <a href="/2015/03/05/2014-08-10-uiscrollview/">UIScrollView原理探究</a></li>
-    
-  
-    
-    
-      <li>05: <a href="/2015/03/05/2014-08-10-backgroundModes/">理解后台允许定位、音频、网络电话</a></li>
-    
-  
-    
-    
-      
-        </ul>
-      </article>
-      <article class="month">
-        <time datetime="2014-10" class="month-title">2014 十月</time>
-        <ul class="post-list">
-          <li>29: <a href="/2014/10/29/高仿网易40新UI框架的Demo/">高仿网易4.0新UI框架的Demo</a></li>
-    
-  
-    
-    
-      <li>24: <a href="/2014/10/24/Size-Class/">Size Class</a></li>
-    
-  
-    
-    
-      <li>09: <a href="/2014/10/09/iOS8-New-Features/">iOS8 New Features</a></li>
-    
-  
-    
-    
-      
-        </ul>
-      </article>
-      <article class="month">
-        <time datetime="2014-08" class="month-title">2014 八月</time>
-        <ul class="post-list">
-          <li>08: <a href="/2014/08/08/2014-08-08-UIWebView+HTML5/">UIWebView+HTML5</a></li>
-    
-  
-    
-    
-      <li>07: <a href="/2014/08/07/2014-08-24-objc-var-arguments/">浅析Objective-C中的可变参数</a></li>
-    
-  
   </div>
-</section>
-    <footer id="footer">
-    <div class="foot-warp">
-      <p>© 2014 Duke&#39;s blog</p>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><i class="icon" id="icon-tag"></i>标签：<em>iOS开发</em></h1>
+            </div>
+            <div class="main-body-content">
+              
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2015" class="archive-year"><i class="icon" id="icon-calendar-o"></i>2015</a>
+        </div>
+        <div class="archives">
+    
+    
+    
+      <div class="article-row">
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      <a href="/2015/03/05/2014-08-10-uiscrollview/" class="thumbnail">
+  
+    <span style="background-image:url(/images/uiscrollview/SV2@2x.png
+)" alt="UIScrollView原理探究" class="thumbnail-image"></span>
+  
+
+</a>
+      <div class="article-meta">
+        <p class="category"></p>
+        <p class="date"><time datetime="2015-03-05T02:07:53.000Z" itemprop="datePublished">2015-03-05</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/2015/03/05/2014-08-10-uiscrollview/" class="title">UIScrollView原理探究</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        文章出处:http://www.objc.io/issue-3/scroll-view.html
+Issue #3 Views, August 2013By Joe Conway
+      </p>
     </div>
-  </footer>
-  <script src="/js/tools.js"></script>
+  </article>
+
+    
+  
+    
+    
+    
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      <a href="/2015/03/05/2014-08-10-backgroundModes/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+
+</a>
+      <div class="article-meta">
+        <p class="category"></p>
+        <p class="date"><time datetime="2015-03-05T02:07:53.000Z" itemprop="datePublished">2015-03-05</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/2015/03/05/2014-08-10-backgroundModes/" class="title">理解后台允许定位、音频、网络电话</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        大家都知道我们的程序在后台运行的时间是10分钟，10分钟后便会停止。但是像实时定位，播放音频，以及网络电话这些功能我们需要在后台持续运行。那么我们就要进行相应的设置。
+      </p>
+    </div>
+  </article>
+
+    
+      </div>
+    
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2014" class="archive-year"><i class="icon" id="icon-calendar-o"></i>2014</a>
+        </div>
+        <div class="archives">
+    
+    
+    
+      <div class="article-row">
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      <a href="/2014/10/29/高仿网易40新UI框架的Demo/" class="thumbnail">
+  
+    <span style="background-image:url(/images/netease/NewsFourAppGif.gif
+)" alt="高仿网易4.0新UI框架的Demo" class="thumbnail-image"></span>
+  
+
+</a>
+      <div class="article-meta">
+        <p class="category"></p>
+        <p class="date"><time datetime="2014-10-29T04:07:51.000Z" itemprop="datePublished">2014-10-29</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/2014/10/29/高仿网易40新UI框架的Demo/" class="title">高仿网易4.0新UI框架的Demo</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        NewsFourApp：一个模仿网易4.0新UI框架的开源项目。
+      </p>
+    </div>
+  </article>
+
+    
+  
+    
+    
+    
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      <a href="/2014/10/24/Size-Class/" class="thumbnail">
+  
+    <span style="background-image:url(http://ww1.sinaimg.cn/large/5317194cjw1elmdblrgc1j20d20gyaaw.jpg
+)" alt="Size Class" class="thumbnail-image"></span>
+  
+
+</a>
+      <div class="article-meta">
+        <p class="category"></p>
+        <p class="date"><time datetime="2014-10-24T08:41:15.000Z" itemprop="datePublished">2014-10-24</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/2014/10/24/Size-Class/" class="title">Size Class</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        以前和安卓的同学聊天的时候，谈到适配一直是一个非常开心的话题，看到他们被各种屏幕适配折磨的欲仙欲死，心里真替他们高兴。不过在做到 iPhone 和 iPad 的适配的时候，一个页面需要配置多个 xib 进行开发还是个很头疼的事情。再加上 iPhone6 和 iPhone6 plus 的发布，适配似乎也变得麻烦起来。今天了解了 iOS8 中的 Size Class 之后，真的笑，笑出声。
+      </p>
+    </div>
+  </article>
+
+    
+      </div>
+    
+  
+    
+    
+    
+    
+      <div class="article-row">
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      <a href="/2014/10/09/iOS8-New-Features/" class="thumbnail">
+  
+    <span style="background-image:url(/images/ios8newfeatures/image.jpeg
+)" alt="iOS8 New Features" class="thumbnail-image"></span>
+  
+
+</a>
+      <div class="article-meta">
+        <p class="category"></p>
+        <p class="date"><time datetime="2014-10-09T14:48:15.000Z" itemprop="datePublished">2014-10-09</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/2014/10/09/iOS8-New-Features/" class="title">iOS8 New Features</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        
+      </p>
+    </div>
+  </article>
+
+    
+  
+    
+    
+    
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      <a href="/2014/08/08/2014-08-08-UIWebView+HTML5/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+
+</a>
+      <div class="article-meta">
+        <p class="category"></p>
+        <p class="date"><time datetime="2014-08-08T05:24:30.000Z" itemprop="datePublished">2014-08-08</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/2014/08/08/2014-08-08-UIWebView+HTML5/" class="title">UIWebView+HTML5</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        原文出处:http://blog.csdn.net/duzixi/article/details/36047201
+对于不少iOS开发者来说，HTML5的内容比较陌生。尤其是UIWebView类的 stringByEvaluatingJavaScriptFromString 方法让很多人觉得又得学一种新的语言。而这一部分也是项目中学生常问的问题之一。本文以Category（类目）的方式扩展了UIWebView类，将一些常用的JavaScript操作封装成UIWebView类方法。
+      </p>
+    </div>
+  </article>
+
+    
+      </div>
+    
+  
+    
+    
+    
+    
+      <div class="article-row">
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      <a href="/2014/08/07/2014-08-24-objc-var-arguments/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+
+</a>
+      <div class="article-meta">
+        <p class="category"></p>
+        <p class="date"><time datetime="2014-08-07T00:00:00.000Z" itemprop="datePublished">2014-08-07</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/2014/08/07/2014-08-24-objc-var-arguments/" class="title">浅析Objective-C中的可变参数</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        在Cocoa-Foundation框架中，不难发现如下带有可变参数的方法声明，例如：12- (instancetype)initWithObjects:(id)firstObj, ...;+ (instancetype)arrayWithObjects:(id)firstObj, ...;
+在实际项目开发中，也许我们也会遇到需要可变参数列表的方法做支撑。我们都知道Objective-C以C为语言基础，事实上，这种带有可变参数列表的方法声明与实现正是归功于C语言。
+      </p>
+    </div>
+  </article>
+
+    
   
   
+    </div></section>
   
+
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="twitter" href="/"><i id="icon-twitter" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="facebook" href="/"><i id="icon-facebook" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="google_plus" href="/"><i id="icon-google_plus" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/leodouglasduke"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="/"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post">
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2015/03/05/2014-08-10-uiscrollview/" class="thumbnail">
+  
+    <span style="background-image:url(/images/uiscrollview/SV2@2x.png
+)" alt="UIScrollView原理探究" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2015/03/05/2014-08-10-uiscrollview/" class="title">UIScrollView原理探究</a></p>
+              <p class="item-date"><time datetime="2015-03-05T02:07:53.000Z" itemprop="datePublished">2015-03-05</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2015/03/05/2014-08-10-backgroundModes/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2015/03/05/2014-08-10-backgroundModes/" class="title">理解后台允许定位、音频、网络电话</a></p>
+              <p class="item-date"><time datetime="2015-03-05T02:07:53.000Z" itemprop="datePublished">2015-03-05</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2015/03/04/hello-world/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2015/03/04/hello-world/" class="title">Hello World</a></p>
+              <p class="item-date"><time datetime="2015-03-04T15:20:32.000Z" itemprop="datePublished">2015-03-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2014/10/31/iOS开发之设计模式一/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2014/10/31/iOS开发之设计模式一/" class="title">iOS开发之设计模式一</a></p>
+              <p class="item-date"><time datetime="2014-10-31T02:16:36.000Z" itemprop="datePublished">2014-10-31</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2014/10/29/高仿网易40新UI框架的Demo/" class="thumbnail">
+  
+    <span style="background-image:url(/images/netease/NewsFourAppGif.gif
+)" alt="高仿网易4.0新UI框架的Demo" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2014/10/29/高仿网易40新UI框架的Demo/" class="title">高仿网易4.0新UI框架的Demo</a></p>
+              <p class="item-date"><time datetime="2014-10-29T04:07:51.000Z" itemprop="datePublished">2014-10-29</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS开发/">iOS开发</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式之道/">设计模式之道</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/iOS开发/" style="font-size: 20px;">iOS开发</a><a href="/tags/设计模式之道/" style="font-size: 10px;">设计模式之道</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2015 Duke</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
+
+  <script src="/scrollLoading/main.js" type="text/javascript"></script>
+
+
+
+<script src="/js/html-patch.js" type="text/javascript"></script>
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+
+  </div>
 </body>
 </html>
