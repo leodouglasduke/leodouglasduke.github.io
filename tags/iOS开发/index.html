@@ -325,8 +325,12 @@ Issue #3 Views, August 2013By Joe Conway
       </h2>
       <p class="article-excerpt">
         
-        在Cocoa-Foundation框架中，不难发现如下带有可变参数的方法声明，例如：12- (instancetype)initWithObjects:(id)firstObj, ...;+ (instancetype)arrayWithObjects:(id)firstObj, ...;
-在实际项目开发中，也许我们也会遇到需要可变参数列表的方法做支撑。我们都知道Objective-C以C为语言基础，事实上，这种带有可变参数列表的方法声明与实现正是归功于C语言。
+        在Cocoa-Foundation框架中，不难发现如下带有可变参数的方法声明，例如：` objc
+
+(instancetype)initWithObjects:(id)firstObj, …;
+
+
+(instancetype)arrayWithObjects:(id)firstObj, …;`在实际项目开发中，也许我们也会遇到需要可变参数列表的方法做支撑。我们都知道Objective-C以C为语言基础，事实上，这种带有可变参数列表的方法声明与实现正是归功于C语言。
       </p>
     </div>
   </article>
