@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[Duke's blog]]></title>
-  
+  <subtitle><![CDATA[记录、分享、探讨、进步]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.idukemou.com/"/>
   <updated>2014-10-09T09:50:46.000Z</updated>
   <id>http://blog.idukemou.com/</id>
   
   <author>
-    <name><![CDATA[John Doe]]></name>
+    <name><![CDATA[Duke]]></name>
     
   </author>
   
