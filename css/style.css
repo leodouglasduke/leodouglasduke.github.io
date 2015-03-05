@@ -260,12 +260,12 @@ body {
 .logo {
   display: block;
   padding: 10px 0;
-  width: 700px;
+  width: 500px;
   height: 72px;
   background: url("images/logo-header.png") 0px 10px no-repeat;
-  -webkit-background-size: 700px 72px;
-  -moz-background-size: 700px 72px;
-  background-size: 700px 72px;
+  -webkit-background-size: 500px 72px;
+  -moz-background-size: 500px 72px;
+  background-size: 500px 72px;
 }
 .main-body {
   margin-top: -60px;
@@ -1500,11 +1500,11 @@ a.article-title:hover {
   font-size: 38px;
 }
 #footer .logo {
-  width: 560px;
+  width: 400px;
   height: 57.6px;
-  -webkit-background-size: 560px 57.6px;
-  -moz-background-size: 560px 57.6px;
-  background-size: 560px 57.6px;
+  -webkit-background-size: 400px 57.6px;
+  -moz-background-size: 400px 57.6px;
+  background-size: 400px 57.6px;
 }
 .article-entry pre,
 .article-entry .highlight {
