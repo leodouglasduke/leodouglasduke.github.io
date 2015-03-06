@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iOS开发之设计模式一 | Duke&#39;s blog</title>
+  <title>iOS开发之地图与定位 | Duke&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="iOS设计模式－你也许听说过，但是你真的知道它的用意吗？对于设计模式的重要性，很多开发者也很赞同，但是相关的博客太少，并且在coding过程中，我相信绝大多数开发者并不会在意自己的代码是否遵循某个设计模式。说白了，设计模式就是码农先驱们长期coding过程中，总结出来的经验教训，设计理念。我一直坚信，coding就像是在写一篇文章，怎样写出一篇美文呢，就是少说废话，结构巧妙，立意鲜明，设计模式就像">
+  <meta name="description" content="现在很多社交、电商、团购应用都引入了地图和定位功能，似乎地图功能不再是地图应用和导航应用所特有的。的确，有了地图和定位功能确实让我们的生活更加丰富多彩，极大的改变了我们的生活方式。例如你到了一个陌生的地方想要查找附近的酒店、超市等就可以打开软件搜索周边;类似的，还有很多团购软件可以根据你所在的位置自动为你推荐某些商品。总之，目前地图和定位功能已经大量引入到应用开发中。今天就和大家一起看一下iOS如">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS开发之设计模式一">
-<meta property="og:url" content="http://blog.idukemou.com/2014/10/31/iOS开发之设计模式一/index.html">
+<meta property="og:title" content="iOS开发之地图与定位">
+<meta property="og:url" content="http://blog.idukemou.com/2015/03/06/iOS开发之地图与定位/index.html">
 <meta property="og:site_name" content="Duke's blog">
-<meta property="og:description" content="iOS设计模式－你也许听说过，但是你真的知道它的用意吗？对于设计模式的重要性，很多开发者也很赞同，但是相关的博客太少，并且在coding过程中，我相信绝大多数开发者并不会在意自己的代码是否遵循某个设计模式。说白了，设计模式就是码农先驱们长期coding过程中，总结出来的经验教训，设计理念。我一直坚信，coding就像是在写一篇文章，怎样写出一篇美文呢，就是少说废话，结构巧妙，立意鲜明，设计模式就像">
+<meta property="og:description" content="现在很多社交、电商、团购应用都引入了地图和定位功能，似乎地图功能不再是地图应用和导航应用所特有的。的确，有了地图和定位功能确实让我们的生活更加丰富多彩，极大的改变了我们的生活方式。例如你到了一个陌生的地方想要查找附近的酒店、超市等就可以打开软件搜索周边;类似的，还有很多团购软件可以根据你所在的位置自动为你推荐某些商品。总之，目前地图和定位功能已经大量引入到应用开发中。今天就和大家一起看一下iOS如">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS开发之设计模式一">
-<meta name="twitter:description" content="iOS设计模式－你也许听说过，但是你真的知道它的用意吗？对于设计模式的重要性，很多开发者也很赞同，但是相关的博客太少，并且在coding过程中，我相信绝大多数开发者并不会在意自己的代码是否遵循某个设计模式。说白了，设计模式就是码农先驱们长期coding过程中，总结出来的经验教训，设计理念。我一直坚信，coding就像是在写一篇文章，怎样写出一篇美文呢，就是少说废话，结构巧妙，立意鲜明，设计模式就像">
+<meta name="twitter:title" content="iOS开发之地图与定位">
+<meta name="twitter:description" content="现在很多社交、电商、团购应用都引入了地图和定位功能，似乎地图功能不再是地图应用和导航应用所特有的。的确，有了地图和定位功能确实让我们的生活更加丰富多彩，极大的改变了我们的生活方式。例如你到了一个陌生的地方想要查找附近的酒店、超市等就可以打开软件搜索周边;类似的，还有很多团购软件可以根据你所在的位置自动为你推荐某些商品。总之，目前地图和定位功能已经大量引入到应用开发中。今天就和大家一起看一下iOS如">
 
   
   
@@ -89,7 +89,7 @@
             </div>
             <div class="main-body-content">
               
-  <article id="post-iOS开发之设计模式一" class="article article-single article-type-post" itemscope itemprop="blogPost">
+  <article id="post-iOS开发之地图与定位" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
       <!--  -->
       
@@ -97,28 +97,31 @@
           
   
     <h1 class="article-title" itemprop="name">
-      iOS开发之设计模式一
+      iOS开发之地图与定位
     </h1>
   
 
         </header>
       
       <p class="article-byline">
-        <a href="/2014/10/31/iOS开发之设计模式一/" class="article-date">
-  <time datetime="2014-10-31T02:16:36.000Z" itemprop="datePublished">2014-10-31</time>
+        <a href="/2015/03/06/iOS开发之地图与定位/" class="article-date">
+  <time datetime="2015-03-06T01:47:33.000Z" itemprop="datePublished">2015-03-06</time>
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <p>iOS设计模式－你也许听说过，但是你真的知道它的用意吗？对于设计模式的重要性，很多开发者也很赞同，但是相关的博客太少，并且在coding过程中，我相信绝大多数开发者并不会在意自己的代码是否遵循某个设计模式。说白了，设计模式就是码农先驱们长期coding过程中，总结出来的经验教训，设计理念。我一直坚信，coding就像是在写一篇文章，怎样写出一篇美文呢，就是少说废话，结构巧妙，立意鲜明，设计模式就像是我们写文章时使用的模版，是要写一篇散文呢，还是一首诗，还是等等等等。<br><a id="more"></a></p>
-<p>设计模式实际上就是对一些软件设计中的常见问题所提出的可复用的解决方案。这样模版化的设计就是为了帮助我们完成简单、易懂、可复用性高的代码。如果遵照设计模式，我们也可以编出低耦合性的代码，这样可以方便我们后期维护，根据需求替换、修改某些组件。就像拥有步步高打火机一样so easy。<br>作为iOS开发者，我们应当备感荣幸，因为即便我们不懂什么设计模式，我们一样在用它们完成我们的项目。这样感谢我们的衣食父母－Apple。在Cocoa框架中，许多类都是Apple根据设计模式构建的。那么接下来的内容我门就一起把iOS开发中常用的设计模式扒个精光，看看它们究竟是神马？！！</p>
-<p>本篇博文中，我讲重点从以下几点带着大家解析设计模式：<br>1.神马是设计模式（<em>What the design pattern is</em>）<br>2.为神马我们要用它（<em>Why you should use it</em>）<br>3.如何使用设计模式（<em>How to use it</em>）<br>4.在哪儿用恰当（<em>Where appropriate</em>）<br>5.到底何时才使用设计模式（<em>common pitfalls to watch for when using the pattern</em>）</p>
+        <p>现在很多社交、电商、团购应用都引入了地图和定位功能，似乎地图功能不再是地图应用和导航应用所特有的。的确，有了地图和定位功能确实让我们的生活更加丰富多彩，极大的改变了我们的生活方式。例如你到了一个陌生的地方想要查找附近的酒店、超市等就可以打开软件搜索周边;类似的，还有很多团购软件可以根据你所在的位置自动为你推荐某些商品。总之，目前地图和定位功能已经大量引入到应用开发中。今天就和大家一起看一下iOS如何进行地图和定位开发。</p>
+<ol>
+<li>定位</li>
+<li>地图</li>
+</ol>
+<p>**定位</p>
 
       </div>
       <footer class="article-footer">
-        <a data-url="http://blog.idukemou.com/2014/10/31/iOS开发之设计模式一/" data-id="ci6wxcykj0005tpfyjwq0mg76" class="article-share-link">分享到</a>
+        <a data-url="http://blog.idukemou.com/2015/03/06/iOS开发之地图与定位/" data-id="ci6wxcykn0008tpfy55iorreu" class="article-share-link">分享到</a>
         
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式之道/">设计模式之道</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS开发/">iOS开发</a></li></ul>
 
       </footer>
     </div>
@@ -149,20 +152,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/03/04/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <p class="article-nav-title">
-        
-          Hello World
-        
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
-    </a>
   
-  
-    <a href="/2014/10/29/高仿网易40新UI框架的Demo/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/03/05/2014-08-10-backgroundModes/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <p class="article-nav-title">高仿网易4.0新UI框架的Demo</p>
+      <p class="article-nav-title">理解后台允许定位、音频、网络电话</p>
       <i class="icon" id="icon-chevron-left"></i>
     </a>
   
