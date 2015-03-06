@@ -1,122 +1,60 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>UIScrollView原理探究 | Duke&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="It may be hard to believe, but a UIScrollView isn’t much different than a standard UIView. Sure, the scroll view has a few more methods, but those methods are really just facades of existing UIView pr">
-<meta property="og:type" content="article">
-<meta property="og:title" content="UIScrollView原理探究">
-<meta property="og:url" content="http://blog.idukemou.com/2015/03/05/2014-08-10-uiscrollview/index.html">
-<meta property="og:site_name" content="Duke's blog">
-<meta property="og:description" content="It may be hard to believe, but a UIScrollView isn’t much different than a standard UIView. Sure, the scroll view has a few more methods, but those methods are really just facades of existing UIView pr">
-<meta property="og:image" content="/images/uiscrollview/SV2@2x.png">
-<meta property="og:image" content="/images/uiscrollview/SV1@2x.png">
-<meta property="og:image" content="/images/uiscrollview/SV3@2x.png">
-<meta property="og:image" content="/images/uiscrollview/SV4@2x.png">
-<meta property="og:image" content="/images/uiscrollview/SV5@2x.png">
-<meta property="og:image" content="/images/uiscrollview/SV6@2x.png">
-<meta property="og:image" content="/images/uiscrollview/SV7@2x.png">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UIScrollView原理探究">
-<meta name="twitter:description" content="It may be hard to believe, but a UIScrollView isn’t much different than a standard UIView. Sure, the scroll view has a few more methods, but those methods are really just facades of existing UIView pr">
+  <meta name="author" content="Duke">
 
   
-  
-    <link rel="icon" href="/favicon.png">
-  
-
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
-  
-  
-    <link rel="stylesheet" href="/scrollLoading/style.css" type="text/css">
-
+  <meta name="description" content="It may be hard to believe, but a UIScrollView isn’t much different than a standard UIView. Sure, the scroll view has a few more methods, but those methods are really just facades of existing UIView properties.">
   
   
 
-
+  <link rel="alternate" href="/atom.xml" title="Duke&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
   
-    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-
 </head>
 
 <body>
-  <div id="wrap">
-    <header id="header">
-  <div id="header-outer" class="outer">
-    <div class="container">
-      <div class="container-inner">
-        <div id="header-title">
-          <h1 class="logo-wrap">
-            <a href="/" class="logo"></a>
-          </h1>
-          
-            <h2 class="subtitle-wrap">
-              <p class="subtitle">记录、分享、探讨、进步</p>
-            </h2>
-          
-        </div>
-        <div id="header-inner" class="nav-container">
-          <a id="main-nav-toggle" class="nav-icon"></a>
-          <div class="nav-container-inner">
-            <ul id="main-nav">
-              
-                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
-              
-                    
-                  
-                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about/index.html">About</a></li>
-              
-			  </ul>
-            <nav id="sub-nav">
-              <div id="search-form-wrap">
-                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="q" value="site:http://blog.idukemou.com"></form>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
   </div>
-</header>
-    <div class="container">
-      <div class="main-body container-inner">
-        <div class="main-body-inner">
-          <section id="main">
-            <div class="main-body-header">
-
-              <h1 class="header">未分类</h1>
-            </div>
-            <div class="main-body-content">
-              
-  <article id="post-2014-08-10-uiscrollview" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-      <!--  -->
-      
-        <header class="article-header">
-          
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
   
-    <h1 class="article-title" itemprop="name">
-      UIScrollView原理探究
-    </h1>
+  <header>
+    
+  
+    <h1 class="title">UIScrollView原理探究</h1>
   
 
-        </header>
-      
-      <p class="article-byline">
-        <a href="/2015/03/05/2014-08-10-uiscrollview/" class="article-date">
-  <time datetime="2015-03-05T02:07:53.000Z" itemprop="datePublished">2015-03-05</time>
-</a>
-      </p>
-      <div class="article-entry" itemprop="articleBody">
-        <p>文章出处:<a href="http://www.objc.io/issue-3/scroll-view.html" target="_blank" rel="external">http://www.objc.io/issue-3/scroll-view.html</a></p>
+    <time datetime="2015-03-05T02:07:53.000Z">
+  <span class="day">5</span><span class="month">Mar</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>文章出处:<a href="http://www.objc.io/issue-3/scroll-view.html" target="_blank" rel="external">http://www.objc.io/issue-3/scroll-view.html</a></p>
 <p>Issue #3 Views, August 2013<br>By <a href="http://stablekernel.com" target="_blank" rel="external">Joe Conway</a><br><a id="more"></a><br>It may be hard to believe, but a UIScrollView isn’t much different than a standard UIView. Sure, the scroll view has a few more methods, but those methods are really just facades of existing UIView properties. Thus, most of the understanding of how a UIScrollView works comes from understanding UIView - specifically, the details of the two-step view rendering process.</p>
 <h3 id="Rasterization_and_Composition">Rasterization and Composition</h3><p>The first part of the rendering process is known as rasterization. Rasterization simply means to take a set of drawing instructions and produce an image. UIButtons, for example, draw an image with a rounded rectangle and a title in the center. These images aren’t drawn to the screen; instead, they are held onto by their view to be used during the next step.</p>
 <p>Once each view has its rasterized image, these images are drawn on top of each other to produce one screen-sized image in a step called composition. The view hierarchy plays a big role in how composition occurs: a view’s image is composited on top of its superview’s image. Then, that composited image is composited on top of the super-superview’s image, and so on. The view at the top of the hierarchy is the window and its composited image (which is a composite of every image in the view hierarchy) is what the user sees.</p>
@@ -155,238 +93,53 @@
 <p>This allows the maximum value of the content offset to show the area beyond the scrollable area. The top of the visible area is outside the bounds of the scroll view, and is therefore clipped (although it is also off the screen itself, so that doesn’t matter too much).</p>
 <p>Hopefully, this gives you some insight into the inner workings of scroll views. Are you wondering about zooming? Well, we won’t talk about it today, but here’s a fun tip: check the transform property of the view you return from viewForZoomingInScrollView:. Once again, you’ll find that a scroll view is just cleverly using already-existing properties of UIView.</p>
 
-      </div>
-      <footer class="article-footer">
-        <a data-url="http://blog.idukemou.com/2015/03/05/2014-08-10-uiscrollview/" data-id="ci6wxcyl3000htpfyfy9eua1v" class="article-share-link">分享到</a>
-        
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS开发/">iOS开发</a></li></ul>
-
-      </footer>
-    </div>
-  </article>
-  
-
-            </div>
-          </section>
-          <aside id="sidebar">
-  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-  <div class="sidebar-top">
-    <p>关注我 :</p>
-    <ul class="social-links">
-      
-        <li><a class="social-tooltip" title="twitter" href="/"><i id="icon-twitter" class="icon"></i></a></li>
-      
-        <li><a class="social-tooltip" title="facebook" href="/"><i id="icon-facebook" class="icon"></i></a></li>
-      
-        <li><a class="social-tooltip" title="github" href="https://github.com/leodouglasduke"><i id="icon-github" class="icon"></i></a></li>
-      
-        <li><a class="social-tooltip" title="weibo" href="/"><i id="icon-weibo" class="icon"></i></a></li>
-      
-        <li><a class="social-tooltip" title="rss" href="/atom.xml"><i id="icon-rss" class="icon"></i></a></li>
-      
-    </ul>
-  </div>
-  
     
-<nav id="article-nav">
-  
-    <a href="/2015/03/05/2014-08-10-backgroundModes/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <p class="article-nav-title">
-        
-          理解后台允许定位、音频、网络电话
-        
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
-    </a>
-  
-  
-    <a href="/2015/03/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <p class="article-nav-title">Hello World</p>
-      <i class="icon" id="icon-chevron-left"></i>
-    </a>
-  
-</nav>
-
-  
-  <div class="widgets-container">
     
+    <footer class="meta">
       
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul id="recent-post">
-        
-          <li>
-            <div class="item-thumbnail">
-              <a href="/2015/03/06/iOS开发之地图与定位/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-
-</a>
-            </div>
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/03/06/iOS开发之地图与定位/" class="title">iOS开发之地图与定位</a></p>
-              <p class="item-date"><time datetime="2015-03-06T01:47:33.000Z" itemprop="datePublished">2015-03-06</time></p>
-            </div>
-          </li>
-        
-          <li>
-            <div class="item-thumbnail">
-              <a href="/2015/03/05/2014-08-10-backgroundModes/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-
-</a>
-            </div>
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/03/05/2014-08-10-backgroundModes/" class="title">理解后台允许定位、音频、网络电话</a></p>
-              <p class="item-date"><time datetime="2015-03-05T02:07:53.000Z" itemprop="datePublished">2015-03-05</time></p>
-            </div>
-          </li>
-        
-          <li>
-            <div class="item-thumbnail">
-              <a href="/2015/03/05/2014-08-10-uiscrollview/" class="thumbnail">
-  
-    <span style="background-image:url(/images/uiscrollview/SV2@2x.png
-)" alt="UIScrollView原理探究" class="thumbnail-image"></span>
-  
-
-</a>
-            </div>
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/03/05/2014-08-10-uiscrollview/" class="title">UIScrollView原理探究</a></p>
-              <p class="item-date"><time datetime="2015-03-05T02:07:53.000Z" itemprop="datePublished">2015-03-05</time></p>
-            </div>
-          </li>
-        
-          <li>
-            <div class="item-thumbnail">
-              <a href="/2015/03/04/hello-world/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-
-</a>
-            </div>
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/03/04/hello-world/" class="title">Hello World</a></p>
-              <p class="item-date"><time datetime="2015-03-04T15:20:32.000Z" itemprop="datePublished">2015-03-04</time></p>
-            </div>
-          </li>
-        
-          <li>
-            <div class="item-thumbnail">
-              <a href="/2014/10/31/iOS开发之设计模式一/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-
-</a>
-            </div>
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2014/10/31/iOS开发之设计模式一/" class="title">iOS开发之设计模式一</a></p>
-              <p class="item-date"><time datetime="2014-10-31T02:16:36.000Z" itemprop="datePublished">2014-10-31</time></p>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-    
       
+  <div class="tags">
+<a href="/tags/iOS开发/">iOS开发</a></div>
 
-    
       
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">3</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget-wrap widget-float">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/iOS开发/" style="font-size: 20px;">iOS开发</a><a href="/tags/设计模式之道/" style="font-size: 10px;">设计模式之道</a>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">链接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://hexo.io">Hexo</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
+    </footer>
     
   </div>
-</aside>
-        </div>
-      </div>
-    </div>
-    <footer id="footer">
   
-  <div class="container">
-    <div class="container-inner">
-      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
-      <div class="credit">
-        <h1 class="logo-wrap">
-          <a href="/" class="logo"></a>
-        </h1>
-        <p>&copy; 2015 Duke</p>
-        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
-      </div>
-    </div>
-  </div>
-</footer>
-    
-
-
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-
-
-
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+</article></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2015 Duke
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
 
 
 
 
-  <script src="/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
-
-  <script src="/scrollLoading/main.js" type="text/javascript"></script>
-
-
-
-<script src="/js/html-patch.js" type="text/javascript"></script>
-
-<script src="/js/script.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
 
-  </div>
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
 </body>
 </html>
