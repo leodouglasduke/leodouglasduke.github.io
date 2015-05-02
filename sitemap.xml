@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.idukemou.com/2015/05/02/iOS-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91-ReactiveCocoa-%E4%B8%80/</loc>
+    <lastmod>2015-05-02T14:53:27.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.idukemou.com/2015/04/20/2014-08-10-uiscrollview/</loc>
     <lastmod>2015-05-02T14:44:57.000Z</lastmod>
   </url>
@@ -9,11 +14,6 @@
   <url>
     <loc>http://blog.idukemou.com/2015/04/20/2014-08-10-backgroundModes/</loc>
     <lastmod>2015-05-02T14:44:32.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.idukemou.com/2015/05/02/iOS-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91-ReactiveCocoa-%E4%B8%80/</loc>
-    <lastmod>2015-05-02T14:41:31.000Z</lastmod>
   </url>
   
   <url>
