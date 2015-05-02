@@ -31,7 +31,7 @@
 
 
 
-  <title> Size Class // Duke's 的技术博客 </title>
+  <title> 理解后台允许定位、音频、网络电话 // Duke's 的技术博客 </title>
 </head>
 
 <body>
@@ -102,7 +102,7 @@
           
           
             
-              Size Class
+              理解后台允许定位、音频、网络电话
             
           
         </h1>
@@ -110,7 +110,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2014-10-24
+          发表于 2015-05-02
         </span>
 
         
@@ -119,8 +119,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2014/10/24/Size-Class/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/24/Size-Class/"></span>
+            <a href="/2015/05/02/2014-08-10-backgroundModes/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/02/2014-08-10-backgroundModes/"></span>
             </a>
           </span>
           
@@ -134,36 +134,9 @@
       
 
       
-        <p>以前和安卓的同学聊天的时候，谈到适配一直是一个非常开心的话题，看到他们被各种屏幕适配折磨的欲仙欲死，心里真替他们高兴。不过在做到 iPhone 和 iPad 的适配的时候，一个页面需要配置多个 xib 进行开发还是个很头疼的事情。再加上 iPhone6 和 iPhone6 plus 的发布，适配似乎也变得麻烦起来。今天了解了 iOS8 中的 Size Class 之后，真的笑，笑出声。<br><a id="more"></a><br><strong>简介</strong><br>先来看一下我们的新伙伴：Size Classes。在 iOS8 中，我们不用再像以前那样，一个页面新建多个 xib 文件来适配不同类型的屏幕，现在我们可以把各种尺寸屏幕的适配工作放在一个文件中完成，然后可以通过不同类别的 Size 来定制各种尺寸的界面。换句话说，你眼前的 Storyboard 不是一个普通的 Storyboard ，而是一个九合一的 Storyboard ，可以管理九种类型的屏幕。<br>对于宽度和高度而言，都有三种情况：紧凑 (Compact) 、任意 (Any) 、 正常 (Regular) ，所以一共有9个类别，在设置 Size Class 的时候页面会有提示。比如宽为 Compact 高为 Any 的情况，提示为 3.5-inch、4-inch、4.7-inch的横竖状态下的屏幕：<br><img src="http://ww1.sinaimg.cn/large/5317194cjw1elmdblrgc1j20d20gyaaw.jpg" alt="size-class-1"><br>苹果官网文档举了一些例子，比如 iPad ：<br><img src="/images/sizeClass/size-class-2.png" class="right"><br><img src="/images/sizeClass/size-class-3.png" class="center"><br>比如 iPhone ：<br><img src="/images/sizeClass/size-class-4.png" class="center"><br><img src="/images/sizeClass/size-class-5.png" class="center"></p>
-<p>比如 iPhone6 plus 的横屏状态：<br><img src="/images/sizeClass/size-class-6.png" class="center"><br>实验<a href="http://callmewhy.qiniudn.com/QQ20140914-17%402x.png" target="_blank" rel="external">http://callmewhy.qiniudn.com/QQ20140914-17%402x.png</a><br>Size Class 的作用是将不同尺寸的屏幕进行分类处理，而最后进行布局管理的还是Autolayout。</p>
-<p>下面我们来搞个小项目试验一下。项目源码可以在这里下载。</p>
-<p>新建一个项目，进入到 Storyboard ，发现默认的尺寸是宽高均为 Any 的：<br><img src="/images/sizeClass/size-class-7.png" class="center"><br>我们可以在右侧的视图中选择开启还是关闭 Size Class ：<br><img src="/images/sizeClass/size-class-8.png" class="center"><br>因为 Size Class 是依赖于 Autolayout 的，所以当你尝试关闭 AutoLayout 而打开 Size Class 的时候会有如下的提醒：<br><img src="/images/sizeClass/size-class-9.png" class="center"><br>接下来我们先搞个 View 看看，测试一下直接扔进去会是什么效果：<br><img src="/images/sizeClass/size-class-10.png" class="center"><br>看起来好像不错啊，难道不用做适配就可以了？</p>
-<p>想太多。</p>
-<p>我们把 Size 切换到 Compact 看下：<br><img src="/images/sizeClass/size-class-11.png" class="center"><br>喔真的好 Compact 啊！</p>
-<p>在不手动添加 Constraints 的情况下， Xcode 会自动自动分配一套默认的 Constraints ，以确保你在任何尺寸的屏幕下都看到一样坐标一样大小的页面。这就意味着我们有时可以忽视自动布局，不再需要设置那些自动布局且效果不错的控件，只需要为某些特定的视图创建 Constraints 。</p>
-<p>不过现在我们想让这个正方形时刻保持居中，所以分别给它加上了四个 Constraints ：<br><img src="/images/sizeClass/size-class-12.png" class="center"><br>啊哈这样似乎就可以…就可以了…吗？</p>
-<p>我们随便换了个 Size 看下效果，突然发现刚刚加的 Constraints 居然无效了，在导航栏里变成了灰色，在 Storyboard 里也看不到 Constraints 的影子：<br><img src="/images/sizeClass/size-class-13.png" class="center"><br>这是因为刚刚我们的 Constraints 是在宽高均为 Compact 的 Size 中设置的，所以并不适用于其他尺寸的屏幕。这么说难道我们以后都要配置九份 Constraints 吗！这也太苦逼了吧！老板我们要涨工资啊！显然不是，我们只需要把默认的 Constraints 放在宽高均为 Any 的 Size 中即可：<br><img src="/images/sizeClass/size-class-14.png" class="center"><br>这时再切换到其他尺寸就都没有问题了：<br><img src="/images/sizeClass/size-class-15.png" class="center"><br>接下来，假设我们想在 iPhone 设备上显示两个 Label ，但是想在 iPad 上显示四个 Label，可以这样搞。</p>
-<p>先把 Size 切换到 iPhone 的尺寸，然后添加两个 Label ：<br><img src="/images/sizeClass/size-class-16.png" class="center"><br>再把 Size 切换到 Regular ，添加三个 Label ：<br><img src="/images/sizeClass/size-class-17.png" class="center"><br>这时在 iPhone 中查看一下效果：<br><img src="/images/sizeClass/size-class-18.png" class="center"><br>再去 iPad 里看下效果：<br><img src="/images/sizeClass/size-class-19.png" class="center"><br>OK 就是这么简单。</p>
-<p><strong>实战</strong><br>接下来我们来看一看如何利用 Size Class 来做适配。前面有说过， Size Class 不能解决适配问题，它的功能只是将屏幕进行分类，便于管理。真正搞适配的苦力还是 AutoLayout 。苹果的帮助文档给出三种方案解决 View 的适配问题。</p>
-<p>我们先把项目改成最原始的版本，只留一个 View 在视图的正中央。原始版本的项目可以在这里下载。运行一下是这样的：<br><img src="/images/sizeClass/size-class-20.png" class="center"><br>修改 Constraints</p>
-<p>适配的第一个方案是针对不同尺寸的屏幕设置不同大小的 Constrain 。</p>
-<p>我们选中一个 Constraint ，在右侧面板观察它的属性：<br><img src="/images/sizeClass/size-class-21.png" class="center"><br>在右侧面板就是 Constraints 的值，第一行是默认值，适用于所有尺寸。如果要添加不同尺寸下的自定义值，可以点击加号：<br><img src="/images/sizeClass/size-class-22.png" class="center"><br>这样就可以添加自定义的 Constraint 值了。其中， w 和 h 分别指宽 (width) 和 高(height) 。 C 是指 Size Class 中的 Compact， R 则对应 Regular ， A 对应 Any 。</p>
-<p>如果希望这个正方形在 iPad 下可以保持100的边距，在 iPhone 下可以保持0的边距，可以把每个 Constrant 的值都设为100，然后再添加一个 wC hA 的值为0：<br><img src="/images/sizeClass/size-class-23.png" class="center"><br>运行一下程序看下，首先是 iPad 下：<br><img src="/images/sizeClass/size-class-24.png" class="center"><br>简直完美，再看下 iPhone4s 下的效果：<br><img src="/images/sizeClass/size-class-25.png" class="center"><br>哈哈似乎也不错。。。等下，说好的填满呢！怎么左右两边空了这么多空白？</p>
-<p>突然想起了前几天在公司用 Xcode6 打开的项目再用 Xcode5 打开之后有些 xib 文件会报错，大意是： Xcode6 加了一些 Margin 我不认识。会不会是这些 Margin 在作怪呢？查了一下官方文档，确实在 iOS8 中多了一个 layoutMargin 的属性。偷偷拿 PS 量了一下，确实默认值是8个 point ，虚惊一场，还以为是 AutoLayout 坏了呢。</p>
-<p>不过现在我不是很想要这个 Margin ，怎么把它关了呢？点击下方的 Pin 按钮，把 Margin 的勾选去掉即可：<br><img src="/images/sizeClass/size-class-26.png" class="center"><br>然后再重新设置一下 Constraint ，OK它终于成功的填满了整个屏幕：<br><img src="/images/sizeClass/size-class-27.png" class="center"><br>完整的源码可以在这里下载。</p>
-<p><strong>安装和卸载 Constraints</strong></p>
-<p>有时候我们可能会遇到比较复杂的设计，针对不同的尺寸需要有不同的布局，这和 Web 开发中的响应式设计颇有几分相似。</p>
-<p>假设我们需要这样一个 View ：在 iPad 下固定宽度，居中对齐，在 iPhone 下，则希望它保持左右边距居中对齐。</p>
-<p>我们只需要添加 top 、 bottom 、 center x 、 width ，分分钟就可以搞出这样一个布局：<br><img src="/images/sizeClass/size-class-28.png" class="center"><br>现在我们完成了第一步：在 iPad 下固定宽度，居中对齐。</p>
-<p>接下来我们需要把 width 属性在 iPhone 中删除。选中 width 之后在右侧可以看到这样一个区域：<br><img src="/images/sizeClass/size-class-29.png" class="center"><br>它表示，当前这个 Constraint 适用宽高均为 Any 的屏幕，和上一步相似，我们可以点击加号添加不同屏幕下的设置：<br><img src="/images/sizeClass/size-class-30.png" class="center"><br>installed 前面打上勾，表示这个 Constraint 是适用这个尺寸的，如果没有打勾，则表明在那个尺寸下这个 Constraint 是无效的。比如下面的这个例子表示这个 Constraint 仅在宽高均为 Regular 的情况下 ( 也就是 iPad ) 有效：<br><img src="/images/sizeClass/size-class-31.png" class="center"><br>接下来我们再添加上 leading 和 trailing 为0：<br><img src="/images/sizeClass/size-class-32.png" class="center"><br>这样就能实现在 iPhone 下保持左右边距居中对齐的效果了：<br><img src="/images/sizeClass/size-class-33.png" class="center"><br>但是打开 iPad 之后发现本来设置的固定宽度的效果失效了，变成了和 iPhone 一样的左右间距固定的情况。这是因为我们没有在 iPad 的屏幕下“卸载” (uninstall) 掉刚刚设置的 leading 和 trailing 。我们有两种方式解决这个问题。</p>
-<p>第一种方案，选中 leading 和 trailing 这两个 Constraint 之后，在右侧添加宽高均为 Regular 的选项并去掉勾选，表明，这个 Constraint 适用于所有情况，就是不要用在宽高均为 Regular 的屏幕上：<br><img src="/images/sizeClass/size-class-34.png" class="center"><br>第二种方案，切换到 Regular Regular 的尺寸之后，选中那两个 Constraint 然后按下Command+Delete ( 注意要按下 Command 键，要不然就是彻底删除了)，就可以把这两个 Constraint 在当前的 Size 中卸载了：<br><img src="/images/sizeClass/size-class-35.png" class="center"><br>运行一下， iPad 果然也没有问题了：<br><img src="/images/sizeClass/size-class-36.png" class="center"><br>完整的源码可以在这里下载。</p>
-<p><strong>安装和卸载 View</strong></p>
-<p>有时候光设置 Constraint 是无法满足比较复杂的需求的，比如大屏下我希望能显示三个按钮，分别对应：吃早饭，吃午饭，吃晚饭。但是在 iPhone 等小屏下可能放不下这么多按钮，只能显示一个按钮：吃饭。遇到这种情况，我们只能对 View 进行安装 (install) 和卸载 (uninstall)。</p>
-<p>我们先在 View 里面加上三个按钮：<br><img src="/images/sizeClass/size-class-37.png" class="center"><br>但是我们并不希望这三个按钮出现在 iPhone 中，所以我们可以在右侧面板添加适用的尺寸，并去掉 Any 的勾选。这一步和上一章中 Constraint 的安装卸载十分类似：<br><img src="/images/sizeClass/size-class-38.png" class="center"><br>可以看到左侧的 Button 变成了灰色，表示这个按钮在当前 Any 的尺寸下是不会显示的。我们再添加一个吃饭的按钮，添加 Regular 的尺寸并去掉勾选，表明自己不会在 Regular 屏幕中出现：<br><img src="/images/sizeClass/size-class-39.png" class="center"><br>这样，在 iPhone 中我们可以看到 吃饭 的按钮：<br><img src="/images/sizeClass/size-class-40.png" class="center"><br>而在 iPad 中可以看到 吃早饭 吃午饭 吃晚饭 的按钮：<br><img src="/images/sizeClass/size-class-42.png" class="center"><br>完整的源码可以在<a href="https://github.com/callmewhy/learn-swift/tree/installing-and-uninstalling-views" target="_blank" rel="external">这里下载</a>。</p>
-<p><strong>其他</strong></p>
-<p>最后，无意中看到仿佛 Font 的左边多了点什么：<br><img src="/images/sizeClass/size-class-42.png" class="center"><br>相信大家早已轻车熟路了，不妨动手试试看。可以参考苹果官方的帮助文档学习。</p>
-<p><strong>后话</strong><br>第一次接触 Size Class ，还没有在实际项目中应用过，可能有些理解偏差，如有错误，还望指正，不胜感激。</p>
-<p>一路走来，感觉有了 Size Class 之后，iOS 开发的适配工作可能并没有想象中的复杂，哪怕屏幕比更大还大，我们依旧能够真的笑，笑出声。<br><em>原文链接地址:<a href="http://blog.callmewhy.com/2014/09/12/learn-ios8-size-class/#textlogo" target="_blank" rel="external">http://blog.callmewhy.com/2014/09/12/learn-ios8-size-class/#textlogo</a></em></p>
+        <p>大家都知道我们的程序在后台运行的时间是10分钟，10分钟后便会停止。但是像实时定位，播放音频，以及网络电话这些功能我们需要在后台持续运行。那么我们就要进行相应的设置。<br><a id="more"></a></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"> - (<span class="keyword">void</span>)applicationDidEnterBackground:(<span class="built_in">UIApplication</span> *)application</span><br><span class="line">&#123;  </span><br><span class="line">    <span class="comment">/* Use this method to release shared resources, save user data, </span><br><span class="line">    invalidate timers, and store enough application state information </span><br><span class="line">    to restore your application to its current state in case it is terminated later.  </span><br><span class="line">       If your application supports background execution, this method </span><br><span class="line">    is called instead of applicationWillTerminate: when the user quits.  </span><br><span class="line">    */</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([[UIDevice currentDevice] respondsToSelector:<span class="keyword">@selector</span>(isMultitaskingSupported)])  </span><br><span class="line">    &#123; <span class="comment">//Check if our iOS version supports multitasking I.E iOS 4  </span></span><br><span class="line">        <span class="keyword">if</span> ([[UIDevice currentDevice] isMultitaskingSupported])  </span><br><span class="line">        &#123; <span class="comment">//Check if device supports mulitasking  </span></span><br><span class="line">            <span class="built_in">UIApplication</span> *application = [<span class="built_in">UIApplication</span> sharedApplication]; </span><br><span class="line">            <span class="comment">//Get the shared application instance  </span></span><br><span class="line">              </span><br><span class="line">            __block UIBackgroundTaskIdentifier background_task; </span><br><span class="line">            <span class="comment">//Create a task object  </span></span><br><span class="line">              </span><br><span class="line">            background_task = [application beginBackgroundTaskWithExpirationHandler: ^&#123;  </span><br><span class="line">                <span class="comment">/*  </span><br><span class="line">                 当应用程序后台停留的时间为0时，会执行下面的操作</span><br><span class="line">                 （应用程序后台停留的时间为600s，可以通过backgroundTimeRemaining查看）  </span><br><span class="line">                 */</span>  </span><br><span class="line">                [application endBackgroundTask: background_task];</span><br><span class="line">                 <span class="comment">//Tell the system that we are done with the tasks  </span></span><br><span class="line">                background_task = UIBackgroundTaskInvalid; </span><br><span class="line">                <span class="comment">//Set the task to be invalid  </span></span><br><span class="line">                  </span><br><span class="line">                <span class="comment">//System will be shutting down the app at any point in time now  </span></span><br><span class="line">            &#125;];  </span><br><span class="line">              </span><br><span class="line">            <span class="comment">// Background tasks require you to use asyncrous tasks  </span></span><br><span class="line">              </span><br><span class="line">            <span class="built_in">dispatch_async</span>(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>), ^&#123;  </span><br><span class="line">                <span class="comment">//Perform your tasks that your application requires  </span></span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"time remain:%f"</span>, application<span class="variable">.backgroundTimeRemaining</span>);                  </span><br><span class="line">                [application endBackgroundTask: background_task]; </span><br><span class="line">                <span class="comment">//End the task so the system knows that you are done with what you need to perform  </span></span><br><span class="line">                background_task = UIBackgroundTaskInvalid; <span class="comment">//Invalidate the background_task  </span></span><br><span class="line">            &#125;);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 修改应用的Info.plist 文件，你需要在Info.plist文件中添加UIBackgroundModes字段，该字段的值是应用支持的所有后台模式，是一个数值类型。目前此数 组可以包含“audio”、“location”和“voip”这三个字符串常量.</p>
 
       
     </div>
@@ -181,13 +154,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/10/29/高仿网易40新UI框架的Demo/">高仿网易4.0新UI框架的Demo</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/10/09/iOS8-New-Features/">iOS8 New Features</a>
+              <a href="/2015/05/02/hello-world/">Hello World</a>
             
           </div>
         </div>
@@ -203,8 +174,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2014/10/24/Size-Class/"
-               data-title="Size Class" data-url="http://blog.idukemou.com/2014/10/24/Size-Class/">
+          <div class="ds-thread" data-thread-key="2015/05/02/2014-08-10-backgroundModes/"
+               data-title="理解后台允许定位、音频、网络电话" data-url="http://blog.idukemou.com/2015/05/02/2014-08-10-backgroundModes/">
           </div>
         
       </div>

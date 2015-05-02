@@ -18,7 +18,7 @@
 
 
 
-  <meta name="keywords" content="iOS开发," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-  <title> 理解后台允许定位、音频、网络电话 // Duke's 的技术博客 </title>
+  <title> [iOS]响应式编程开发-ReactiveCocoa(一) // Duke's 的技术博客 </title>
 </head>
 
 <body>
@@ -102,7 +102,7 @@
           
           
             
-              理解后台允许定位、音频、网络电话
+              [iOS]响应式编程开发-ReactiveCocoa(一)
             
           
         </h1>
@@ -110,7 +110,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-03-05
+          发表于 2015-05-02
         </span>
 
         
@@ -119,8 +119,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/03/05/2014-08-10-backgroundModes/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/05/2014-08-10-backgroundModes/"></span>
+            <a href="/2015/05/02/iOS-响应式编程开发-ReactiveCocoa-一/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/02/iOS-响应式编程开发-ReactiveCocoa-一/"></span>
             </a>
           </span>
           
@@ -134,33 +134,45 @@
       
 
       
-        <p>大家都知道我们的程序在后台运行的时间是10分钟，10分钟后便会停止。但是像实时定位，播放音频，以及网络电话这些功能我们需要在后台持续运行。那么我们就要进行相应的设置。<br><a id="more"></a></p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"> - (<span class="keyword">void</span>)applicationDidEnterBackground:(<span class="built_in">UIApplication</span> *)application</span><br><span class="line">&#123;  </span><br><span class="line">    <span class="comment">/* Use this method to release shared resources, save user data, </span><br><span class="line">    invalidate timers, and store enough application state information </span><br><span class="line">    to restore your application to its current state in case it is terminated later.  </span><br><span class="line">       If your application supports background execution, this method </span><br><span class="line">    is called instead of applicationWillTerminate: when the user quits.  </span><br><span class="line">    */</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([[UIDevice currentDevice] respondsToSelector:<span class="keyword">@selector</span>(isMultitaskingSupported)])  </span><br><span class="line">    &#123; <span class="comment">//Check if our iOS version supports multitasking I.E iOS 4  </span></span><br><span class="line">        <span class="keyword">if</span> ([[UIDevice currentDevice] isMultitaskingSupported])  </span><br><span class="line">        &#123; <span class="comment">//Check if device supports mulitasking  </span></span><br><span class="line">            <span class="built_in">UIApplication</span> *application = [<span class="built_in">UIApplication</span> sharedApplication]; </span><br><span class="line">            <span class="comment">//Get the shared application instance  </span></span><br><span class="line">              </span><br><span class="line">            __block UIBackgroundTaskIdentifier background_task; </span><br><span class="line">            <span class="comment">//Create a task object  </span></span><br><span class="line">              </span><br><span class="line">            background_task = [application beginBackgroundTaskWithExpirationHandler: ^&#123;  </span><br><span class="line">                <span class="comment">/*  </span><br><span class="line">                 当应用程序后台停留的时间为0时，会执行下面的操作</span><br><span class="line">                 （应用程序后台停留的时间为600s，可以通过backgroundTimeRemaining查看）  </span><br><span class="line">                 */</span>  </span><br><span class="line">                [application endBackgroundTask: background_task];</span><br><span class="line">                 <span class="comment">//Tell the system that we are done with the tasks  </span></span><br><span class="line">                background_task = UIBackgroundTaskInvalid; </span><br><span class="line">                <span class="comment">//Set the task to be invalid  </span></span><br><span class="line">                  </span><br><span class="line">                <span class="comment">//System will be shutting down the app at any point in time now  </span></span><br><span class="line">            &#125;];  </span><br><span class="line">              </span><br><span class="line">            <span class="comment">// Background tasks require you to use asyncrous tasks  </span></span><br><span class="line">              </span><br><span class="line">            <span class="built_in">dispatch_async</span>(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>), ^&#123;  </span><br><span class="line">                <span class="comment">//Perform your tasks that your application requires  </span></span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"time remain:%f"</span>, application<span class="variable">.backgroundTimeRemaining</span>);                  </span><br><span class="line">                [application endBackgroundTask: background_task]; </span><br><span class="line">                <span class="comment">//End the task so the system knows that you are done with what you need to perform  </span></span><br><span class="line">                background_task = UIBackgroundTaskInvalid; <span class="comment">//Invalidate the background_task  </span></span><br><span class="line">            &#125;);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 修改应用的Info.plist 文件，你需要在Info.plist文件中添加UIBackgroundModes字段，该字段的值是应用支持的所有后台模式，是一个数值类型。目前此数 组可以包含“audio”、“location”和“voip”这三个字符串常量.</p>
+        <p><strong>什么是响应式编程</strong><br>　　响应式编程是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。</p>
+<p>　　例如，在命令式编程环境中，a:=b+c表示将表达式的结果赋给a，而之后改变b或c的值不会影响a。但在响应式编程中，a的值会随着b或c的更新而更新。<br>电子表格程序就是响应式编程的一个例子。单元格可以包含字面值或类似”=B1+C1”的公式，而包含公式的单元格的值会依据其他单元格的值的变化而变化。</p>
+<p>　　响应式编程最初是为了简化交互式用户界面的创建和实时系统动画的绘制而提出来的一种方法，但它本质上是一种通用的编程范式。</p>
+<p><strong>什么是ReactiveCocoa</strong></p>
+<p>　　ReactiveCocoa (RAC) 是一个Objective-C语言内实现响应式编程的框架。</p>
+<p>　　RAC提供了大量的能够完成发送 value’s stream 的API。</p>
+<p>　　RAC通过使用信号量(RACSignal)来完成获取当前值和未来值的功能，而不像传统的程序开发一样需要声明大量的变量。</p>
+<p>Josh Abernathy这样解释它：</p>
+<p>程序接收输入产生输出。输出就是对输入做了一些事的结果。输入，转换，输出，完成。</p>
+<p>输入是应用动作的全部来源。点击、键盘事件、定时器事件、GPS时间、网络请求响应都算是输入。这些事件被传递到应用中，应用将他们以某种方式混合，产生了结果：就是输出。</p>
+<p>输出通常会改变应用的UI。开关状态变化、列表有了新的元素都是UI变化。也有可能让磁盘上某个文件产生变化，或者产生一个API请求，这都是应用的输出。</p>
+<p>但不像传统的输入输出设计，应用的输入输出可以产生很多次。应用打开后，不只是一个简单的 输入→工作→输出 就构成了一个生命周期。应用经常有大量的输入并基于这些输入产生输出。</p>
+<p><strong>基本的使用方法</strong></p>
+<p>　　例如，我们目前想要实现一个NSString对象可以一直绑定到最新的时间，即使字符串发生了变化，也不应该是再去使用时间去重新赋值了。</p>
+<p>　　听起来特别像Objective-C语言内的KVO特性，但是这并不是具有压倒性优势的那个方法:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span> *)change context:(<span class="keyword">void</span> *)context;</span><br></pre></td></tr></table></figure></p>
+<p>　　那么我们现在使用RAC框架来实现这个功能</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">***<span class="variable">.h</span></span><br><span class="line"><span class="comment">//用来标识时间变量</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span> ,<span class="keyword">strong</span>) <span class="built_in">NSDate</span> *time;</span><br><span class="line"><span class="comment">//用来标识文字显示区域</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span> ,<span class="keyword">strong</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UILabel</span> *label;</span><br><span class="line">***<span class="variable">.m</span></span><br><span class="line"><span class="comment">//申请注册一个每个1秒将会在主线程执行一次的信号量</span></span><br><span class="line">RACSignal *repeatSignal = [[RACSignal interval:<span class="number">1</span> onScheduler:[RACScheduler mainThreadScheduler]] repeat];</span><br><span class="line"><span class="comment">//为信号量添加执行代码端</span></span><br><span class="line">[repeatSignal subscribeNext: ^(<span class="built_in">NSDate</span>* time)&#123;</span><br><span class="line">    <span class="keyword">self</span><span class="variable">.time</span> = time;</span><br><span class="line">&#125;];</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">//申请注册一个时间属性的信号量</span></span><br><span class="line">RACSignal *timeSignal = [<span class="keyword">self</span> rac_valuesForKeyPath:<span class="string">@"time"</span> observer:<span class="keyword">self</span>];</span><br><span class="line"><span class="comment">//为信号量添加执行代码端</span></span><br><span class="line">[timeSignal subscribeNext:^(<span class="built_in">NSDate</span>* time) &#123;</span><br><span class="line">    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];</span><br><span class="line">    [formatter setDateFormat:<span class="string">@"HH:mm:ss"</span>];</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">self</span><span class="variable">.label</span><span class="variable">.text</span> = [formatter stringFromDate:time];</span><br><span class="line">     </span><br><span class="line">    RELEASESAFELY(formatter);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>同样和Objective-C语言内的KVO特性不同的是，RACSignal信号量可以进行过滤设置。</p>
+<p>　　以上边的例子的话，我们加一个功能。</p>
+<p>　　•获取偶数秒的时间</p>
+<p>　　那么信号量部分的代码可以写为<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//申请注册一个时间属性的信号量</span></span><br><span class="line">RACSignal *timeSignal = [<span class="keyword">self</span> rac_valuesForKeyPath:<span class="string">@"time"</span> observer:<span class="keyword">self</span>];</span><br><span class="line"><span class="comment">//为信号量添加过滤block</span></span><br><span class="line">[[timeSignal filter:^<span class="built_in">BOOL</span>(<span class="built_in">NSDate</span>* time) &#123;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//获取描述的时间</span></span><br><span class="line">    NSDateComponents *com = [[<span class="built_in">NSCalendar</span> currentCalendar] components:NSCalendarUnitSecond fromDate:time];</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> com<span class="variable">.second</span> % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">     </span><br><span class="line">&#125;] subscribeNext:^(<span class="built_in">NSDate</span>* time) &#123;</span><br><span class="line">    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];</span><br><span class="line">    [formatter setDateFormat:<span class="string">@"HH:mm:ss"</span>];</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">self</span><span class="variable">.label</span><span class="variable">.text</span> = [formatter stringFromDate:time];</span><br><span class="line">     </span><br><span class="line">    RELEASESAFELY(formatter);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
 
     <div class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/iOS开发/"> #iOS开发 </a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/03/06/iOS开发之地图与定位/">iOS开发之地图与定位</a>
+              <a href="/2015/05/02/2014-08-10-uiscrollview/">UIScrollView原理探究</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/03/05/2014-08-10-uiscrollview/">UIScrollView原理探究</a>
+              <a href="/2015/04/07/Objective-C字面量/">浅析Objective-C字面量</a>
             
           </div>
         </div>
@@ -176,8 +188,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/03/05/2014-08-10-backgroundModes/"
-               data-title="理解后台允许定位、音频、网络电话" data-url="http://blog.idukemou.com/2015/03/05/2014-08-10-backgroundModes/">
+          <div class="ds-thread" data-thread-key="2015/05/02/iOS-响应式编程开发-ReactiveCocoa-一/"
+               data-title="[iOS]响应式编程开发-ReactiveCocoa(一)" data-url="http://blog.idukemou.com/2015/05/02/iOS-响应式编程开发-ReactiveCocoa-一/">
           </div>
         
       </div>
@@ -221,7 +233,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.idukemou.com/2015/05/02/iOS-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91-ReactiveCocoa-%E4%B8%80/</loc>
+    <lastmod>2015-05-02T14:38:29.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.idukemou.com/2015/04/07/Objective-C%E5%AD%97%E9%9D%A2%E9%87%8F/</loc>
     <lastmod>2015-04-07T11:57:19.000Z</lastmod>
   </url>
@@ -17,7 +22,7 @@
   </url>
   
   <url>
-    <loc>http://blog.idukemou.com/2015/03/04/hello-world/</loc>
+    <loc>http://blog.idukemou.com/2015/05/02/hello-world/</loc>
     <lastmod>2015-03-04T15:20:32.000Z</lastmod>
   </url>
   
@@ -52,7 +57,7 @@
   </url>
   
   <url>
-    <loc>http://blog.idukemou.com/2015/03/05/2014-08-10-backgroundModes/</loc>
+    <loc>http://blog.idukemou.com/2015/05/02/2014-08-10-backgroundModes/</loc>
     <lastmod>2014-10-09T09:54:50.000Z</lastmod>
   </url>
   
@@ -62,7 +67,7 @@
   </url>
   
   <url>
-    <loc>http://blog.idukemou.com/2015/03/05/2014-08-10-uiscrollview/</loc>
+    <loc>http://blog.idukemou.com/2015/05/02/2014-08-10-uiscrollview/</loc>
     <lastmod>2014-10-09T09:50:46.000Z</lastmod>
   </url>
   
