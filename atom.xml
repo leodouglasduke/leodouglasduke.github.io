@@ -114,9 +114,8 @@
     <link href="http://blog.idukemou.com/2015/05/02/iOS-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91-ReactiveCocoa-%E4%B8%80/"/>
     <id>http://blog.idukemou.com/2015/05/02/iOS-响应式编程开发-ReactiveCocoa-一/</id>
     <published>2015-05-02T14:32:20.000Z</published>
-    <updated>2015-05-02T14:38:29.000Z</updated>
-    <content type="html"><![CDATA[<p><strong>什么是响应式编程</strong><br>　　响应式编程是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。</p>
-<p>　　例如，在命令式编程环境中，a:=b+c表示将表达式的结果赋给a，而之后改变b或c的值不会影响a。但在响应式编程中，a的值会随着b或c的更新而更新。<br>电子表格程序就是响应式编程的一个例子。单元格可以包含字面值或类似”=B1+C1”的公式，而包含公式的单元格的值会依据其他单元格的值的变化而变化。</p>
+    <updated>2015-05-02T14:41:31.000Z</updated>
+    <content type="html"><![CDATA[<p><strong>什么是响应式编程</strong><br>　　响应式编程是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。<br><a id="more"></a><br>　　例如，在命令式编程环境中，a:=b+c表示将表达式的结果赋给a，而之后改变b或c的值不会影响a。但在响应式编程中，a的值会随着b或c的更新而更新。<br>电子表格程序就是响应式编程的一个例子。单元格可以包含字面值或类似”=B1+C1”的公式，而包含公式的单元格的值会依据其他单元格的值的变化而变化。</p>
 <p>　　响应式编程最初是为了简化交互式用户界面的创建和实时系统动画的绘制而提出来的一种方法，但它本质上是一种通用的编程范式。</p>
 <p><strong>什么是ReactiveCocoa</strong></p>
 <p>　　ReactiveCocoa (RAC) 是一个Objective-C语言内实现响应式编程的框架。</p>
@@ -138,8 +137,8 @@
 <p>　　那么信号量部分的代码可以写为<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//申请注册一个时间属性的信号量</span></span><br><span class="line">RACSignal *timeSignal = [<span class="keyword">self</span> rac_valuesForKeyPath:<span class="string">@"time"</span> observer:<span class="keyword">self</span>];</span><br><span class="line"><span class="comment">//为信号量添加过滤block</span></span><br><span class="line">[[timeSignal filter:^<span class="built_in">BOOL</span>(<span class="built_in">NSDate</span>* time) &#123;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//获取描述的时间</span></span><br><span class="line">    NSDateComponents *com = [[<span class="built_in">NSCalendar</span> currentCalendar] components:NSCalendarUnitSecond fromDate:time];</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> com<span class="variable">.second</span> % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">     </span><br><span class="line">&#125;] subscribeNext:^(<span class="built_in">NSDate</span>* time) &#123;</span><br><span class="line">    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];</span><br><span class="line">    [formatter setDateFormat:<span class="string">@"HH:mm:ss"</span>];</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">self</span><span class="variable">.label</span><span class="variable">.text</span> = [formatter stringFromDate:time];</span><br><span class="line">     </span><br><span class="line">    RELEASESAFELY(formatter);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p><strong>什么是响应式编程</strong><br>　　响应式编程是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。</p>
-<p>　　例如，在命令式编程环境中，a:=b+]]>
+    <![CDATA[<p><strong>什么是响应式编程</strong><br>　　响应式编程是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。<br>]]>
+    
     </summary>
     
   </entry>
