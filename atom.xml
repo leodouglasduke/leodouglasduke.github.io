@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Duke's 的技术博客]]></title>
+  <title><![CDATA[Duke's Magic]]></title>
   <subtitle><![CDATA[记录、分享、探讨、进步]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.idukemou.com/"/>
